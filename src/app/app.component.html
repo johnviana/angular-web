@@ -1,0 +1,118 @@
+
+<app-navbar></app-navbar>
+<app-lancamento-pesquisa></app-lancamento-pesquisa>
+<!-- <app-pessoa></app-pessoa> -->
+<!-- <app-lancamento-cadastro></app-lancamento-cadastro> -->
+
+<!-- <div class="container">
+  <div class="grid">
+
+    <div class="col-12">
+      <h1>Lançamentos</h1>
+    </div>
+
+    <div class="col-12 p-fluid">
+      <label>Descrição</label>
+      <input pInputText type="text">
+    </div>
+
+    <div class="col-12">
+      <label class="" style="display: block">Vencimento</label>
+      <input pInputText type="text" appCampoCor>
+
+      <label class="label">até</label>
+      <input pInputText type="text" appCampoCor>
+    </div>
+
+    <div class="col-12">
+      <button pButton type="submit" label="Pesquisar"></button>
+    </div>
+  </div>
+
+    <div class="col-12">
+      <p-table [value]="lancamentos" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '50rem'}"
+      [paginator]="true" [rows]="5" [responsive]="true">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Pessoa</th>
+            <th>Descrição</th>
+            <th class="col-data-header">Vencimento</th>
+            <th class="col-data-header">Pagamento</th>
+            <th class="col-valor-header">Valor</th>
+            <th class="col-acoes-header"></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-lancamento>
+          <tr>
+            <td>{{ lancamento.pessoa }}</td>
+            <td>{{ lancamento.descricao }}</td>
+            <td class="col-data-content">{{ lancamento.dataVencimento }}</td>
+            <td class="col-data-content">{{ lancamento.dataPagamento }}</td>
+            <td class="col-valor-content" [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">{{
+              lancamento.valor }}</td>
+            <td class="col-acoes">
+              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="col-12">
+      <a pButton label="Novo Lançamento"></a>
+    </div>
+  </div>
+ -->
+
+<!-- <div class="container">
+
+{{cliente | json}}
+
+ {{cliente | json}}
+{{usuarioForm.valid}}
+
+  <div *ngIf="usuarioForm.invalid && usuarioForm.touched" class="alert alert-danger" >
+    Preencha todos os campos corretamente
+  </div>
+
+  <form autocomplete="off" #usuarioForm="ngForm" (ngSubmit)="salvar(usuarioForm)">
+  <div class="col-12 p-fluid">
+
+    <div>
+      <label class="form-group-label">Nome</label>
+      <input  pInputText  type="text" class="form-control" name="primeiroNome"
+      [(ngModel)]="cliente.nome" required minlength="5" #nome="ngModel">
+
+
+      <div *ngIf="nome.hasError('required') && nome.dirty">Informa um nome</div>
+      <div *ngIf="nome.hasError('minlength')&& nome.dirty">O nome deve ser completo</div>
+   </div>
+
+   <div>
+    <label class="form-group-label">Email</label>
+    <input  pInputText type="text" class="form-control" name="email"
+    [(ngModel)]="cliente.email" email #email="ngModel">
+
+    <div *ngIf="email.invalid && email.dirty">Informe um email Válido</div>
+    <div *ngIf="nome.hasError('required') && email.dirty">Informa um Email</div>
+
+ </div>
+
+  </div>
+
+  <div class="form-group col-12" >
+    <label class="form-control-label">Profissao</label>
+    <select class="form-control" name="profissao" ngModel [(ngModel)]="cliente.profissao"
+    required #pro="ngModel">
+      <option value="">Selecione</option>
+      <option *ngFor="let pro of profissao" [value]="pro">{{pro}}</option>
+
+    </select>
+</div>
+  <div class="col-12">
+
+    <button class="col-12" pButton type="submit" label="Salvar"></button>
+  </div>
+
+</form>
+-->
