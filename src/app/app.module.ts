@@ -14,7 +14,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { TooltipModule } from 'primeng/tooltip';
 import { CampoCorDirective } from './campo-cor.directive';
 import { FormsModule } from '@angular/forms';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './core/navbar/navbar.component';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,13 +27,12 @@ import {MessageModule} from 'primeng/message';
 import { PessoaComponent } from './pessoas/pessoa/pessoa.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PessoasModule } from './pessoas/pessoas.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     CampoCorDirective,
-    NavbarComponent,
-    NavbarComponent,
 
   ],
   imports: [
@@ -44,6 +43,7 @@ import { PessoasModule } from './pessoas/pessoas.module';
 
     LancamentosModule,
     PessoasModule,
+    CoreModule,
 
     ButtonModule,
     TableModule,
