@@ -24,8 +24,9 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import {InputMaskModule} from 'primeng/inputmask';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
-import { PessoaComponent } from './pessoa/pessoa.component';
+import { PessoaComponent } from './pessoas/pessoa/pessoa.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PessoasModule } from './pessoas/pessoas.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,6 @@ import { HttpClientModule } from '@angular/common/http';
     CampoCorDirective,
     NavbarComponent,
     NavbarComponent,
-    PessoaComponent,
 
   ],
   imports: [
@@ -43,6 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     InputTextModule,
 
     LancamentosModule,
+    PessoasModule,
 
     ButtonModule,
     TableModule,
