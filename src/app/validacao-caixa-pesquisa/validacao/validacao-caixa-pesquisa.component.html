@@ -1,0 +1,163 @@
+<!-- Abas no topo -->
+
+<div class="container">
+  <p-tabMenu
+  [model]="abas"
+  [activeItem]="abaAtiva"
+  (onTabChange)="navegar($event)"
+  class="mb-4">
+</p-tabMenu>
+  <form (ngSubmit)="pesquisar()">
+    <div class="grid">
+      <div class="col-12">
+        <h2>Validar Despesa</h2>
+        <hr style="border: none; border-bottom: 3px solid #007ad9; width: 100%; margin-top: 0.2rem; margin-bottom: 1rem;">
+
+      </div>
+
+      <div class="col-12 md:col-4 p-fluid">
+        <label>Tipo Arquivo Fundamentador: *</label>
+        <p-dropdown
+          [options]="tiposArquivo"
+          [(ngModel)]="filtro.tipoArquivo"
+          name="tipoArquivo"
+          placeholder="Selecione o tipo">
+        </p-dropdown>
+      </div>
+
+      <div class="col-12 md:col-4 p-fluid">
+        <label>Sigla Empresa: *</label>
+        <input pInputText [(ngModel)]="filtro.siglaEmpresa" name="siglaEmpresa" />
+      </div>
+
+      <!-- Linha horizontal com campos e botões -->
+      <div class="col-12">
+        <div class="flex gap-2 flex-wrap align-items-end">
+
+          <div class="p-fluid" style="min-width: 160px">
+            <label>Mês de Referência:</label>
+            <p-dropdown
+              [options]="meses"
+              [(ngModel)]="filtro.mesReferencia"
+              name="mesReferencia"
+              placeholder="Mês">
+            </p-dropdown>
+          </div>
+
+          <div class="p-fluid" style="min-width: 100px">
+            <label>Ano:</label>
+            <input pInputText [(ngModel)]="filtro.ano" name="ano" />
+          </div>
+
+          <div class="p-fluid flex-grow-1">
+            <label>Nome do Arquivo:</label>
+            <input pInputText [(ngModel)]="filtro.nomeArquivo" name="nomeArquivo" />
+          </div>
+
+          <div class="flex gap-2">
+            <button
+              pButton
+              type="submit"
+              icon="pi pi-search"
+              label="Pesquisar"
+              class="p-button-warning">
+            </button>
+
+            <button
+              pButton
+              type="button"
+              icon="pi pi-times"
+              label="Limpar"
+              class="p-button-secondary"
+              (click)="limpar()">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!-- Tabela de Arquivos -->
+  <p-table
+    [value]="arquivos"
+    [paginator]="true"
+    [rows]="3"
+    [responsiveLayout]="'scroll'"
+    [selection]="selecionados"
+    [(selection)]="selecionados"
+    dataKey="nomeArquivo"
+    styleClass="p-datatable-sm p-datatable-gridlines mt-4">
+
+    <!-- Cabeçalho com "Registros" -->
+   <ng-template pTemplate="header">
+  <!-- Primeira linha do cabeçalho (com título "Registros" centralizado) -->
+    <!-- Linha superior com o título REGISTROS centralizado -->
+  <tr>
+    <th colspan="10" class="text-center" style="text-align: center; font-weight: bold;">
+      REGISTROS
+    </th>
+  </tr>
+  <tr>
+    <th rowspan="2" style="width: 3rem">
+      <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+    </th>
+    <th rowspan="2">Nome do Arquivo</th>
+    <th colspan="3" class="text-center">Preço de Serviço</th>
+    <th colspan="3" class="text-center">Fee de Premiação</th>
+    <th rowspan="2">Situação</th>
+    <th rowspan="2">Ações</th>
+  </tr>
+
+  <!-- Segunda linha do cabeçalho (subtítulos de cada grupo) -->
+  <tr>
+    <th>Valor Calculado</th>
+    <th>Valor IRPJ (1,5%)</th>
+    <th>Valor Líquido</th>
+
+    <th>Valor Calculado</th>
+    <th>Valor IRPJ (1,5%)</th>
+    <th>Valor Líquido</th>
+  </tr>
+</ng-template>
+    <!-- Corpo da tabela -->
+    <ng-template pTemplate="body" let-arquivo>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="arquivo"></p-tableCheckbox>
+        </td>
+        <td>{{ arquivo.nomeArquivo }}</td>
+
+        <!-- Preço de Serviço -->
+        <td>{{ arquivo.precoServico.valorCalculado | currency:'BRL' }}</td>
+        <td>{{ arquivo.precoServico.valorIrpj | currency:'BRL' }}</td>
+        <td>{{ arquivo.precoServico.valorLiquido | currency:'BRL' }}</td>
+
+        <!-- Fee de Premiação -->
+        <td>{{ arquivo.feePremiacao.valorCalculado | currency:'BRL' }}</td>
+        <td>{{ arquivo.feePremiacao.valorIrpj | currency:'BRL' }}</td>
+        <td>{{ arquivo.feePremiacao.valorLiquido | currency:'BRL' }}</td>
+
+        <!-- Situação -->
+        <td>
+          <i class="pi pi-exclamation-triangle text-warning" *ngIf="arquivo.situacao === 'pendente'"></i>
+        </td>
+
+        <!-- Ações -->
+        <td>
+          <button pButton icon="pi pi-refresh" class="p-button-text"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <!-- Rodapé com botão Validar -->
+  <div class="flex justify-content-end mt-3">
+    <button
+      pButton
+      type="button"
+      icon="pi pi-check"
+      label="Validar"
+      class="p-button-primary">
+    </button>
+  </div>
+</div>

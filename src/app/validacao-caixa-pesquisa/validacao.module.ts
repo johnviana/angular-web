@@ -1,12 +1,9 @@
-
 import { AppRoutingModule } from './../app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LancamentoPesquisaComponent } from './lancamento-pesquisa/lancamento-pesquisa.component';
-import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -21,43 +18,42 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { SharedModule } from '../shared/shared.module';
-
-
+import { ValidacaoCaixaPesquisaComponent } from './validacao/validacao-caixa-pesquisa.component';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 
 
 @NgModule({
-  declarations: [
-    LancamentoPesquisaComponent,
-    LancamentoCadastroComponent
-  ],
+  declarations: [ValidacaoCaixaPesquisaComponent],
 
   exports: [
-    LancamentoPesquisaComponent,
-    LancamentoCadastroComponent
-  ],
+      ValidacaoCaixaPesquisaComponent
+
+    ],
 
   imports: [
     CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    InputTextModule,
-    ButtonModule,
-    TableModule,
-    FormsModule,
-    TabViewModule,
-    TooltipModule,
-    InputTextareaModule,
-    SelectButtonModule,
-    CalendarModule,
-    DropdownModule,
-    InputNumberModule,
-    InputMaskModule,
-    MessagesModule,
-    MessageModule,
-    SharedModule
+        BrowserModule,
+        TabMenuModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        InputTextModule,
+        ButtonModule,
+        TableModule,
+        FormsModule,
+        TabViewModule,
+        TooltipModule,
+        InputTextareaModule,
+        SelectButtonModule,
+        CalendarModule,
+        DropdownModule,
+        InputNumberModule,
+        InputMaskModule,
+        MessagesModule,
+        MessageModule,
+        SharedModule,
+
 
   ]
 })
-export class LancamentosModule { }
+export class ValidacaoModule { }

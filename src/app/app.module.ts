@@ -28,11 +28,15 @@ import { PessoaComponent } from './pessoas/pessoa/pessoa.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { CoreModule } from './core/core.module';
+import { CategoriaService } from './categorias/categoria.service';
+import { ValidacaoModule } from './validacao-caixa-pesquisa/validacao.module';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 @NgModule({
   declarations: [
     AppComponent,
     CampoCorDirective,
+
 
   ],
   imports: [
@@ -44,6 +48,8 @@ import { CoreModule } from './core/core.module';
     LancamentosModule,
     PessoasModule,
     CoreModule,
+    ValidacaoModule,
+    TabMenuModule,
 
     ButtonModule,
     TableModule,
@@ -61,7 +67,7 @@ import { CoreModule } from './core/core.module';
     HttpClientModule
 
   ],
-  providers: [LancamentoService],
+  providers: [LancamentoService, CategoriaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

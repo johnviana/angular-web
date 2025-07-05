@@ -1,4 +1,14 @@
+import { PessoaService } from './../../pessoas/pessoa-service.service';
 import { Component, OnInit } from '@angular/core';
+import { CategoriaService } from 'src/app/categorias/categoria.service';
+import { CategoriaDTO } from 'src/app/dtos/categoriaDTO/categoriaDTO';
+import { PessoaDTO } from 'src/app/dtos/pessoaDTO/pessoaDTO';
+import { __values } from 'tslib';
+
+export interface Categoria {
+  codigo: number;
+  nome: string;
+}
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -12,20 +22,42 @@ tipos = [
   {label: 'Despesa', value: 'DESPESA'}
 ];
 
-categorias = [
-  {label: 'Alimentacao', value: 1},
-  {label: 'Trasporte', value: 2}
-];
+categorias: { label: string; value: number }[] = [];
 
-pessoas = [
-  {label: 'João da Silva', value: 1},
-  {label: 'Sebastiao Souza', value: 2},
-  {label: 'Maria Abadia', value: 3}
-];
+pessoas: {label: string; value: number} [] = [];
 
-  constructor() { }
+  constructor(
+        private categoriaService : CategoriaService,
+        private pessoaService: PessoaService
 
-  ngOnInit(): void {
+  ) { }
+
+  ngOnInit()
+   {
+    this.carregarCategorias(),
+    this.carregarPessoas()
   }
 
+carregarCategorias() {
+    return this.categoriaService.listarTodas()
+      .then((categorias: CategoriaDTO[]) => {
+        console.log(JSON.stringify(categorias, null, 2));
+        this.categorias = categorias.map((c: CategoriaDTO) => ({
+          label: c.nome,
+          value: c.codigo
+        }));
+      });
+  }
+
+  carregarPessoas(){
+    return this.pessoaService.listarTodas()
+    .then((pessoas: PessoaDTO[]) => {
+      this.pessoas = pessoas.map((p: PessoaDTO) => ({
+        label: p.nome,
+        value: p.codigo
+      }));
+    })
+
+  }
 }
+
